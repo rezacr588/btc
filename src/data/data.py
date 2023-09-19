@@ -52,7 +52,7 @@ def preprocess_bitcoin_data(file_path=save_raw_path):
     df['TIME'] = pd.to_datetime(df['TIME'], unit='s')
     
     # Check if the data is ordered chronologically
-    if not df['TIME'].is_monotonic:
+    if not df['TIME'].is_monotonic_increasing:
         df.sort_values(by='TIME', inplace=True)
         print("Data was not ordered chronologically. It has been sorted.")
     else:
